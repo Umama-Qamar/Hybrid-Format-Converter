@@ -1,6 +1,7 @@
 package com.example.hybridformatconverter;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +34,70 @@ public class CompressFormatActivity extends AppCompatActivity {
 
     private final Map<String, List<String>> formatsByCategory = new HashMap<>();
 
+    // Format label -> acceptable MIME types for the system file picker.
+    // NOTE: deliberately broad ("image/*", "audio/*", "video/*") rather than exact MIME
+    // strings. Devices/file managers report MIME types inconsistently — especially for
+    // AMR, M4A, OGG/OPUS, WEBP — so an exact filter can make real files silently
+    // disappear from the picker even though they're present. We validate the actual
+    // file extension after selection instead (see EXTENSIONS_BY_FORMAT below).
+    private static final Map<String, String[]> MIME_TYPES = new HashMap<>();
+    static {
+        MIME_TYPES.put("JPEG/JPG", new String[]{"image/*"});
+        MIME_TYPES.put("PNG", new String[]{"image/*"});
+        MIME_TYPES.put("WEBP", new String[]{"image/*"});
+        MIME_TYPES.put("GIF", new String[]{"image/*"});
+
+        MIME_TYPES.put("PDF", new String[]{"application/pdf"});
+        MIME_TYPES.put("Word", new String[]{"application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/*"});
+        MIME_TYPES.put("Excel", new String[]{"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/*"});
+        MIME_TYPES.put("PPT", new String[]{"application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/*"});
+        MIME_TYPES.put("TXT", new String[]{"text/*"});
+        MIME_TYPES.put("CSV", new String[]{"text/*"});
+
+        MIME_TYPES.put("MP3", new String[]{"audio/*"});
+        MIME_TYPES.put("WAV", new String[]{"audio/*"});
+        MIME_TYPES.put("AAC/M4A", new String[]{"audio/*"});
+        MIME_TYPES.put("OGG/OPUS", new String[]{"audio/*"});
+        MIME_TYPES.put("FLAC", new String[]{"audio/*"});
+
+        MIME_TYPES.put("MP4", new String[]{"video/*"});
+        MIME_TYPES.put("AVI", new String[]{"video/*"});
+        MIME_TYPES.put("MOV", new String[]{"video/*"});
+        MIME_TYPES.put("FLV", new String[]{"video/*"});
+    }
+
+    // Format label -> accepted file extensions, used to validate the file the user actually
+    // picked (since the MIME filter above is intentionally loose).
+    private static final Map<String, String[]> EXTENSIONS_BY_FORMAT = new HashMap<>();
+    static {
+        EXTENSIONS_BY_FORMAT.put("JPEG/JPG", new String[]{"jpg", "jpeg"});
+        EXTENSIONS_BY_FORMAT.put("PNG", new String[]{"png"});
+        EXTENSIONS_BY_FORMAT.put("WEBP", new String[]{"webp"});
+        EXTENSIONS_BY_FORMAT.put("GIF", new String[]{"gif"});
+
+        EXTENSIONS_BY_FORMAT.put("PDF", new String[]{"pdf"});
+        EXTENSIONS_BY_FORMAT.put("Word", new String[]{"docx", "doc"});
+        EXTENSIONS_BY_FORMAT.put("Excel", new String[]{"xlsx", "xls"});
+        EXTENSIONS_BY_FORMAT.put("PPT", new String[]{"pptx", "ppt"});
+        EXTENSIONS_BY_FORMAT.put("TXT", new String[]{"txt"});
+        EXTENSIONS_BY_FORMAT.put("CSV", new String[]{"csv"});
+
+        EXTENSIONS_BY_FORMAT.put("MP3", new String[]{"mp3"});
+        EXTENSIONS_BY_FORMAT.put("WAV", new String[]{"wav"});
+        EXTENSIONS_BY_FORMAT.put("AAC/M4A", new String[]{"aac", "m4a"});
+        EXTENSIONS_BY_FORMAT.put("OGG/OPUS", new String[]{"ogg", "opus"});
+        EXTENSIONS_BY_FORMAT.put("FLAC", new String[]{"flac"});
+
+        EXTENSIONS_BY_FORMAT.put("MP4", new String[]{"mp4"});
+        EXTENSIONS_BY_FORMAT.put("AVI", new String[]{"avi"});
+        EXTENSIONS_BY_FORMAT.put("MOV", new String[]{"mov"});
+        EXTENSIONS_BY_FORMAT.put("FLV", new String[]{"flv"});
+    }
+
+    // Set right before launching the picker, read back in the picker's callback.
+    private String pendingFormat;
+    private ActivityResultLauncher<String[]> filePicker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +108,34 @@ public class CompressFormatActivity extends AppCompatActivity {
         gridFormats = findViewById(R.id.gridFormats);
         bottomNav = findViewById(R.id.bottomNav);
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
+        filePicker = registerForActivityResult(
+                new ActivityResultContracts.OpenDocument(),
+                uri -> {
+                    if (uri == null) return; // user cancelled the picker
+
+                    String pickedName = FileUtils.getDisplayName(this, uri);
+                    String pickedExt = FileUtils.getExtension(pickedName);
+                    String[] allowedExts = EXTENSIONS_BY_FORMAT.get(pendingFormat);
+                    if (allowedExts != null && !Arrays.asList(allowedExts).contains(pickedExt)) {
+                        Toast.makeText(this,
+                                "Wrong file format selected. Please select a " + pendingFormat + " file.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    String category = getIntent().getStringExtra("CATEGORY");
+                    if (category == null) category = "Images";
+
+                    Intent intent = new Intent(CompressFormatActivity.this, CompressionProcessActivity.class);
+                    intent.putExtra(CompressionProcessActivity.EXTRA_CATEGORY, category);
+                    intent.putExtra(CompressionProcessActivity.EXTRA_FORMAT, pendingFormat);
+                    intent.putExtra(CompressionProcessActivity.EXTRA_URI, uri);
+                    // Persist read access so the new activity/background thread can still open this content Uri.
+                    getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(intent);
+                }
+        );
 
         String category = getIntent().getStringExtra("CATEGORY");
         if (category == null) category = "Images";
@@ -55,10 +151,10 @@ public class CompressFormatActivity extends AppCompatActivity {
     }
 
     private void buildFormatMap() {
-        formatsByCategory.put("Images", Arrays.asList("JPEG/JPG", "PNG", "WEBP", "HEIC/HEIF", "GIF"));
+        formatsByCategory.put("Images", Arrays.asList("JPEG/JPG", "PNG", "WEBP", "GIF"));
         formatsByCategory.put("Documents", Arrays.asList("PDF", "Word", "Excel", "PPT", "TXT", "CSV"));
-        formatsByCategory.put("Audio", Arrays.asList("MP3", "WAV", "AAC/M4A", "OGG/OPUS", "FLAC", "AMR"));
-        formatsByCategory.put("Video", Arrays.asList("MP4", "AVI", "MKV", "MOV", "WEBM", "FLV"));
+        formatsByCategory.put("Audio", Arrays.asList("MP3", "WAV", "AAC/M4A", "OGG/OPUS", "FLAC"));
+        formatsByCategory.put("Video", Arrays.asList("MP4", "AVI", "MOV", "FLV"));
     }
 
     private void buildGrid(String category) {
@@ -126,8 +222,12 @@ public class CompressFormatActivity extends AppCompatActivity {
                     PermissionDialogHelper.checkAndShow(this, "compress " + finalFormat, new PermissionDialogHelper.Callback() {
                         @Override
                         public void onProceed() {
-                            Toast.makeText(CompressFormatActivity.this, finalFormat + " compression coming soon!", Toast.LENGTH_SHORT).show();
+                            pendingFormat = finalFormat;
+                            String[] mimes = MIME_TYPES.get(finalFormat);
+                            if (mimes == null) mimes = new String[]{"*/*"};
+                            filePicker.launch(mimes);
                         }
+
                         @Override
                         public void onDenied() {
                             // user chose Don't allow - stay on screen
