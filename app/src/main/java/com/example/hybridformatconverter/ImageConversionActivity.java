@@ -14,7 +14,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class ImageConversionActivity extends AppCompatActivity {
 
-    private MaterialCardView cardJpg, cardPng, cardBmp, cardTiff, cardSvg, cardWebp, cardGif, cardHeic;
+    private MaterialCardView cardJpg, cardPng, cardBmp, cardTiff, cardWebp, cardGif;
     private BottomNavigationView bottomNav;
 
     @Override
@@ -32,10 +32,8 @@ public class ImageConversionActivity extends AppCompatActivity {
         cardPng  = findViewById(R.id.cardPng);
         cardBmp  = findViewById(R.id.cardBmp);
         cardTiff = findViewById(R.id.cardTiff);
-        cardSvg  = findViewById(R.id.cardSvg);
         cardWebp = findViewById(R.id.cardWebp);
         cardGif  = findViewById(R.id.cardGif);
-        cardHeic = findViewById(R.id.cardHeic);
         bottomNav = findViewById(R.id.bottomNav);
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
@@ -46,10 +44,8 @@ public class ImageConversionActivity extends AppCompatActivity {
         cardPng.setOnClickListener(v  -> openConversion("PNG"));
         cardBmp.setOnClickListener(v  -> openConversion("BMP"));
         cardTiff.setOnClickListener(v -> openConversion("TIFF"));
-        cardSvg.setOnClickListener(v  -> openConversion("SVG"));
         cardWebp.setOnClickListener(v -> openConversion("WEBP"));
         cardGif.setOnClickListener(v  -> openConversion("GIF"));
-        cardHeic.setOnClickListener(v -> openConversion("HEIC"));
     }
 
     private void openConversion(String format) {
