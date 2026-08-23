@@ -514,13 +514,11 @@ public class AudioConversionActivity extends AppCompatActivity {
                                     Intent.FLAG_ACTIVITY_CLEAR_TOP
                             );
                             startActivity(intent);
-                            return true;}
-                        if (id == R.id.nav_history) {
-                            Toast.makeText(
-                                    AudioConversionActivity.this,
-                                    "History",
-                                    Toast.LENGTH_SHORT).show();
-                            return true;}
+                            return true;} else if (id == R.id.nav_history) {
+                            Intent intent = new Intent(AudioConversionActivity.this, HistoryActivity.class);
+                            startActivity(intent);
+                            return true;
+                        }
                         if (id == R.id.nav_settings) {
                             Intent intent =
                                     new Intent(AudioConversionActivity.this,

@@ -279,7 +279,8 @@ public class ImageFormatConversionActivity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(ImageFormatConversionActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ImageFormatConversionActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(ImageFormatConversionActivity.this, SettingsActivity.class);

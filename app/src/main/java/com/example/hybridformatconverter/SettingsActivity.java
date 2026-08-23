@@ -167,7 +167,8 @@ public class SettingsActivity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(SettingsActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SettingsActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     return true;

@@ -431,18 +431,10 @@ public class VideoConversionActivity extends AppCompatActivity {
 
                             return true;
 
-                        } else if (
-                                id == R.id.nav_history
-                        ) {
-
-                            Toast.makeText(
-                                    VideoConversionActivity.this,
-                                    "History",
-                                    Toast.LENGTH_SHORT
-                            ).show();
-
+                        } else if (id == R.id.nav_history) {
+                            Intent intent = new Intent(VideoConversionActivity.this, HistoryActivity.class);
+                            startActivity(intent);
                             return true;
-
                         } else if (
                                 id == R.id.nav_settings
                         ) {
