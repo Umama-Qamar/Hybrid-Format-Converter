@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Compression"
+                android:text="Text Extraction"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -58,7 +58,7 @@
                 android:id="@+id/tvSectionLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="IMAGES COMPRESSION"
+                android:text="IMAGES TEXT EXTRACTION"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:gravity="center"
@@ -72,7 +72,6 @@
                 android:useDefaultMargins="false" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

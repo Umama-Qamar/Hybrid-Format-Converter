@@ -1,7 +1,6 @@
 package com.example.hybridformatconverter;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -13,15 +12,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class ImageConversionActivity extends AppCompatActivity {
+public class TextExtractionActivity extends AppCompatActivity {
 
-    private MaterialCardView cardJpg, cardPng, cardBmp, cardTiff, cardWebp, cardGif;
+    private MaterialCardView cardImages;
     private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_conversion);
+        setContentView(R.layout.activity_text_extraction);
 
         initViews();
         setupClickListeners();
@@ -29,30 +28,22 @@ public class ImageConversionActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        cardJpg  = findViewById(R.id.cardJpg);
-        cardPng  = findViewById(R.id.cardPng);
-        cardBmp  = findViewById(R.id.cardBmp);
-        cardTiff = findViewById(R.id.cardTiff);
-        cardWebp = findViewById(R.id.cardWebp);
-        cardGif  = findViewById(R.id.cardGif);
-        bottomNav = findViewById(R.id.bottomNav);
+        cardImages    = findViewById(R.id.cardImages);
+        bottomNav     = findViewById(R.id.bottomNav);
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
 
     private void setupClickListeners() {
-        cardJpg.setOnClickListener(v  -> openConversion("JPG"));
-        cardPng.setOnClickListener(v  -> openConversion("PNG"));
-        cardBmp.setOnClickListener(v  -> openConversion("BMP"));
-        cardTiff.setOnClickListener(v -> openConversion("TIFF"));
-        cardWebp.setOnClickListener(v -> openConversion("WEBP"));
-        cardGif.setOnClickListener(v  -> openConversion("GIF"));
-    }
+        cardImages.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    TextExtractionActivity.this,
+                    TextExtractFormatActivity.class
+            );
 
-    private void openConversion(String format) {
-        Intent intent = new Intent(ImageConversionActivity.this, ImageFormatConversionActivity.class);
-        intent.putExtra("FORMAT", format);
-        startActivity(intent);
+            intent.putExtra("CATEGORY", "Images");
+            startActivity(intent);
+        });
     }
 
     private void setupBottomNavigation() {
@@ -65,11 +56,11 @@ public class ImageConversionActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Intent intent = new Intent(ImageConversionActivity.this, HistoryActivity.class);
+                    Intent intent = new Intent(TextExtractionActivity.this, HistoryActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
-                    Intent intent = new Intent(ImageConversionActivity.this, SettingsActivity.class);
+                    Intent intent = new Intent(TextExtractionActivity.this, SettingsActivity.class);
                     startActivity(intent);
                     return true;
                 }

@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Document Conversion"
+                android:text="Text Extraction"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -53,42 +53,51 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/tvSectionLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DOCX CONVERSION"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
-
-                <Spinner
-                    android:id="@+id/spinnerFormat"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:background="@android:color/transparent"
-                    android:popupBackground="@color/card_bg" />
-
-            </com.google.android.material.card.MaterialCardView>
-
             <GridLayout
-                android:id="@+id/gridConversions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:columnCount="2"
-                android:useDefaultMargins="false" />
+                android:rowCount="1"
+                android:useDefaultMargins="false">
 
+                <!-- Images -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardImages"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:rippleColor="@color/ripple_color">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <FrameLayout
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:background="@drawable/circle_icon_bg">
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_image"
+                                android:tint="@color/accent_blue" />
+                        </FrameLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Images"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="10dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </GridLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
