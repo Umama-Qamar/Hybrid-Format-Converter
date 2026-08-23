@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.arthenica.ffmpegkit.FFmpegKit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
                     // Already on home — scroll to top if needed
                     return true;
                 } else if (id == R.id.nav_history) {
-                    // TODO: navigate to HistoryActivity
-                    Toast.makeText(MainActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(MainActivity.this, SettingsActivity.class);

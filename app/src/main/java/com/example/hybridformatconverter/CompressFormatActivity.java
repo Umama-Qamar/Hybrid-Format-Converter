@@ -251,7 +251,8 @@ public class CompressFormatActivity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(CompressFormatActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CompressFormatActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(CompressFormatActivity.this, SettingsActivity.class);

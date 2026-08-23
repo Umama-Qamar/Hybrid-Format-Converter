@@ -103,7 +103,8 @@ public class PdfToolsActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(PdfToolsActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(PdfToolsActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(PdfToolsActivity.this, SettingsActivity.class);
