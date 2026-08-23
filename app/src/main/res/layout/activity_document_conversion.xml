@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_dark"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_dark">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_right"
+                android:rotation="180"
+                android:tint="@color/text_primary"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Document Conversion"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Reusable row template repeated for each format -->
+
+            <!-- DOCX -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDocx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DOCX Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- PDF -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPdf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PDF Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- TXT -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TXT Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- HTML -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardHtml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HTML Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- RTF -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRtf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RTF Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- PPTX -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPptx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PPTX Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- XLSX -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardXlsx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XLSX Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ODT -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardOdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ODT Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ePUB -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEpub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ePUB Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CSV -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CSV Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- MD -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MD Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- JSON -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardJson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="JSON Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- XML -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardXml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:rippleColor="@color/ripple_color">
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XML Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_dark"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_icon_tint"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
