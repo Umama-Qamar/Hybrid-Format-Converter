@@ -1,6 +1,7 @@
 package com.example.hybridformatconverter;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -64,7 +65,8 @@ public class ImageConversionActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(ImageConversionActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ImageConversionActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(ImageConversionActivity.this, SettingsActivity.class);
