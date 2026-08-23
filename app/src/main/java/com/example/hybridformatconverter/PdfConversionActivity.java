@@ -29,6 +29,7 @@ import com.tom_roush.pdfbox.pdmodel.common.PDRectangle;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import com.tom_roush.pdfbox.rendering.PDFRenderer;
+import com.example.hybridformatconverter.data.HistoryRepository;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -470,6 +471,9 @@ public class PdfConversionActivity extends AppCompatActivity {
                 completed.put(MediaStore.MediaColumns.IS_PENDING, 0);
                 getContentResolver().update(destinationUri, completed, null, null);
             }
+
+            String fileType = mimeType.startsWith("image") ? "image" : "pdf";
+            new HistoryRepository(this).addDownload(file.getName(), destinationUri.toString(), fileType);
 
             return true;
         } catch (Exception e) {

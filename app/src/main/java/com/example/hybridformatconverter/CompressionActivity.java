@@ -73,7 +73,8 @@ public class CompressionActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(CompressionActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CompressionActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(CompressionActivity.this, SettingsActivity.class);
