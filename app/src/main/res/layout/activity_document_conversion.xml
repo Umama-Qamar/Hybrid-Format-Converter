@@ -118,39 +118,6 @@
                     <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- RTF -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRtf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:rippleColor="@color/ripple_color">
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RTF Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- PPTX -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardPptx"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:rippleColor="@color/ripple_color">
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PPTX Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
             <!-- XLSX -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardXlsx"
@@ -163,22 +130,6 @@
                 app:rippleColor="@color/ripple_color">
                 <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XLSX Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- ODT -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardOdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:rippleColor="@color/ripple_color">
-                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ODT Conversion" android:textColor="@color/text_primary" android:textSize="16sp" android:layout_centerVertical="true"/>
                     <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_chevron_right" android:tint="@color/text_secondary" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
