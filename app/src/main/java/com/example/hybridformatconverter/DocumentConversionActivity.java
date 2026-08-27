@@ -14,8 +14,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class DocumentConversionActivity extends AppCompatActivity {
 
-    private MaterialCardView cardDocx, cardPdf, cardTxt, cardHtml, cardRtf,
-            cardPptx, cardXlsx, cardOdt, cardEpub, cardCsv, cardMd, cardJson, cardXml;
+    private MaterialCardView cardDocx, cardPdf, cardTxt, cardHtml, cardXlsx, cardEpub, cardCsv, cardMd, cardJson, cardXml;
     private BottomNavigationView bottomNav;
 
     @Override
@@ -33,10 +32,7 @@ public class DocumentConversionActivity extends AppCompatActivity {
         cardPdf   = findViewById(R.id.cardPdf);
         cardTxt   = findViewById(R.id.cardTxt);
         cardHtml  = findViewById(R.id.cardHtml);
-        cardRtf   = findViewById(R.id.cardRtf);
-        cardPptx  = findViewById(R.id.cardPptx);
         cardXlsx  = findViewById(R.id.cardXlsx);
-        cardOdt   = findViewById(R.id.cardOdt);
         cardEpub  = findViewById(R.id.cardEpub);
         cardCsv   = findViewById(R.id.cardCsv);
         cardMd    = findViewById(R.id.cardMd);
@@ -52,10 +48,7 @@ public class DocumentConversionActivity extends AppCompatActivity {
         cardPdf.setOnClickListener(v  -> openConversion("PDF"));
         cardTxt.setOnClickListener(v  -> openConversion("TXT"));
         cardHtml.setOnClickListener(v -> openConversion("HTML"));
-        cardRtf.setOnClickListener(v  -> openConversion("RTF"));
-        cardPptx.setOnClickListener(v -> openConversion("PPTX"));
         cardXlsx.setOnClickListener(v -> openConversion("XLSX"));
-        cardOdt.setOnClickListener(v  -> openConversion("ODT"));
         cardEpub.setOnClickListener(v -> openConversion("EPUB"));
         cardCsv.setOnClickListener(v  -> openConversion("CSV"));
         cardMd.setOnClickListener(v   -> openConversion("MD"));
@@ -79,7 +72,8 @@ public class DocumentConversionActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (id == R.id.nav_history) {
-                    Toast.makeText(DocumentConversionActivity.this, "History", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DocumentConversionActivity.this, HistoryActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_settings) {
                     Intent intent = new Intent(DocumentConversionActivity.this, SettingsActivity.class);
