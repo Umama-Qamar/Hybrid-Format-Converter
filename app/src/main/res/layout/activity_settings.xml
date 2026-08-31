@@ -5,19 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_dark"
         app:elevation="0dp">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/bg_dark">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,24 +23,19 @@
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:paddingBottom="80dp"
-        android:clipToPadding="false">
-
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <!-- Appearance -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAppearance"
                 android:layout_width="match_parent"
@@ -93,48 +85,6 @@
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Notifications -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@color/card_bg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp">
-                    <ImageView
-                        android:id="@+id/iconNotif"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_notifications"
-                        android:tint="@color/accent_blue"
-                        android:layout_centerVertical="true" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notifications"
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:layout_toEndOf="@id/iconNotif"
-                        android:layout_marginStart="16dp"
-                        android:layout_centerVertical="true" />
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchNotifications"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:checked="true"
-                        app:thumbTint="@color/accent_blue"
-                        app:trackTint="@color/circle_icon_bg" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Rate App -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardRateApp"
                 android:layout_width="match_parent"
@@ -173,8 +123,6 @@
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Send Feedback -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardFeedback"
                 android:layout_width="match_parent"
@@ -213,8 +161,6 @@
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- About App -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAbout"
                 android:layout_width="match_parent"
@@ -253,8 +199,6 @@
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- Share Us -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardShare"
                 android:layout_width="match_parent"
@@ -293,10 +237,8 @@
                         android:layout_centerVertical="true" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -307,5 +249,4 @@
         app:itemTextColor="@color/bottom_nav_icon_tint"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
