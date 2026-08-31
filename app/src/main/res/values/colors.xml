@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_dark">#FFE9EBF0</color>
+    <color name="card_bg">#FFFAFBFD</color>
+    <color name="circle_icon_bg">#FFD8E0EC</color>
+
+    <!-- Text -->
+    <color name="text_primary">#FF1F2937</color>
+    <color name="text_secondary">#FF6B7280</color>
+
+    <!-- Accent -->
+    <color name="accent_blue">#FF4F8CFF</color>
+    <color name="accent_blue_dark">#FF3B7DE8</color>
+
+    <!-- Ripple -->
+    <color name="ripple_color">#334F8CFF</color>
+
+    <!-- Bottom Nav -->
+    <color name="bottom_nav_selected">#FF4F8CFF</color>
+    <color name="bottom_nav_unselected">#FF8A93A3</color>
+
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
