@@ -22,7 +22,7 @@ public class ConvertAPIConverter {
      *
      * Do NOT send your real token to anyone.
      */
-    private static final String API_TOKEN = "O9oLXIGkP6UF0pCLjnUZ7F0Vm7YiWp73";
+    private static final String API_TOKEN = "3RWP0kzsVaFP3eFF43vwxJFjXDQ9Prij";
     public static void convert(
             File input,
             File output,
